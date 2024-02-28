@@ -6,6 +6,7 @@ from rest_framework import generics
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
 from rest_framework.exceptions import NotFound
+from django.db.models import Prefetch
 
 from .serializers import *
 from .permissions import *
@@ -22,7 +23,13 @@ class SpecialtiesList(generics.ListAPIView):
 
     def get_queryset(self):
         """Information to get from specialty"""
-        return Specialty.objects.all()
+        return Specialty.objects.all().prefetch_related(
+            Prefetch('university', queryset=University.objects.all())
+        ).only(
+            'name_of_spec', 'branch', 'number_of_spec', 'faculty',
+            'average_budget_mark', 'average_contract_mark',
+            'university', 'id', 'slug'
+        )
 
 
 class SpecialtyDetail(APIView):
@@ -120,6 +127,7 @@ class CommentListCreate(generics.ListCreateAPIView):
 
 class CommentDetail(APIView):
     """Endpoint to get specific detail about a comment"""
+
     def get(self, request, slug, pk):
         """Get specific comment"""
         try:

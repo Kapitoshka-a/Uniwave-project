@@ -3,10 +3,9 @@ from .models import *
 
 
 class SpecialtyCommentSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Comment
-        exclude = ('specialty',)
+        exclude = ('specialty', 'id', 'active')
 
 
 class SpecialtyDetailSerializer(serializers.ModelSerializer):
@@ -16,7 +15,7 @@ class SpecialtyDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Specialty
-        exclude = ['id']
+        exclude = ['id', 'slug']
 
 
 class SpecialtyListSerializer(serializers.ModelSerializer):
@@ -25,7 +24,8 @@ class SpecialtyListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Specialty
-        exclude = ['id']
+        fields = ['name_of_spec', 'branch', 'number_of_spec', 'faculty',
+                  'average_budget_mark', 'average_contract_mark', 'university', 'url']
 
 
 class UniversityDetailSerializer(serializers.ModelSerializer):

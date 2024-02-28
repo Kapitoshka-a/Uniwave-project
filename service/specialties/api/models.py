@@ -11,7 +11,7 @@ class BaseModel(models.Model):
 
 class University(BaseModel):
     name = models.CharField(max_length=255)
-    slug = models.SlugField(unique=True, db_index=True)
+    slug = models.SlugField(unique=True, db_index=True, max_length=200)
     region = models.CharField(max_length=255, blank=True)
 
     def __str__(self):
@@ -25,7 +25,7 @@ class Specialty(BaseModel):
     number_of_spec = models.PositiveIntegerField(default=0)
     name_of_spec = models.CharField(max_length=255)
     faculty = models.CharField(max_length=255)
-    educational_program = models.TextField()
+    educational_program = models.TextField(max_length=5000)
     offer_type = models.CharField(max_length=150)
     license_scope = models.PositiveIntegerField(default=0)
     contract = models.PositiveIntegerField(default=0)
@@ -37,8 +37,8 @@ class Specialty(BaseModel):
     time_of_study = models.PositiveIntegerField()
     examination_coefficients = models.JSONField(blank=True)
     slug = models.SlugField(db_index=True, null=True)
-    characteristic = models.TextField()
-    future = models.TextField()
+    characteristic = models.TextField(max_length=5000)
+    future = models.TextField(max_length=5000)
 
     class Meta:
         ordering = ('-average_budget_mark',)
