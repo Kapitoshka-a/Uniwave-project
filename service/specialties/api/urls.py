@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import *
+from .views import (SpecialtiesList, SpecialtyDetail, CommentListCreate,
+                    CommentDetail, UniversityList, UniversityDetail)
 
 urlpatterns = [
     path('specialties/', SpecialtiesList.as_view(), name='specialty-list'),

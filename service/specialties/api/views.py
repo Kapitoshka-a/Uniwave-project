@@ -8,7 +8,7 @@ from rest_framework.exceptions import NotFound
 from django.db.models import Prefetch
 
 from .serializers import *
-from .permissions import *
+from .permissions import IsAdminOrReadOnly, IsOwnerOrReadOnly, IsAuthenticatedOrReadOnly
 
 
 # Create your views here.
