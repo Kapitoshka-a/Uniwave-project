@@ -1,5 +1,4 @@
 from rest_framework import status
-from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import generics
@@ -119,7 +118,7 @@ class CommentListCreate(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         """Create e new comment"""
         slug = self.kwargs.get('slug')
-        specialty = get_object_or_404(Specialty, slug=slug)
+        specialty = generics.get_object_or_404(Specialty, slug=slug)
         if Comment.objects.filter(specialty=specialty, author=self.request.user).exists():
             raise serializers.ValidationError({'Message': 'You have already added comment on this specialty'})
         serializer.save(author=self.request.user, specialty=specialty)

@@ -164,3 +164,5 @@ LOGGING = {
         }
     }
 }
+
+CELERY_BROKEN_URL = 'redis://redis:6379/0'
