@@ -16,7 +16,7 @@ class SpecialtiesList(generics.ListAPIView):
     """ Endpoint to list all specialties """
     serializer_class = SpecialtyListSerializer
     permission_classes = [IsAdminOrReadOnly]
-    filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
+    filter_backends = [DjangoFilterBackend,]
     search_fields = ['name_of_spec', 'number_of_spec', 'branch']
     ordering_fields = ['average_budget_mark', 'time_of_study', 'average_budget_mark']
 
