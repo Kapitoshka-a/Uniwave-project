@@ -42,7 +42,7 @@ class SpecialtyDetail(APIView):
         except Specialty.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
         serializer = SpecialtyDetailSerializer(specialty, context={'request': request})
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     def put(self, request, slug):
         """Update specialty details"""
