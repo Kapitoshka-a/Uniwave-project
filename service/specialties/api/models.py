@@ -25,7 +25,7 @@ class Specialty(BaseModel):
     number_of_spec = models.PositiveIntegerField(default=0)
     name_of_spec = models.CharField(max_length=255)
     faculty = models.CharField(max_length=255)
-    educational_program = models.TextField(max_length=5000)
+    educational_program = models.TextField()
     offer_type = models.CharField(max_length=150)
     license_scope = models.PositiveIntegerField(default=0)
     contract = models.PositiveIntegerField(default=0)
@@ -36,9 +36,9 @@ class Specialty(BaseModel):
                                    related_name='specialty_list')
     time_of_study = models.PositiveIntegerField()
     examination_coefficients = models.JSONField(blank=True)
-    slug = models.SlugField(db_index=True, null=True)
-    characteristic = models.TextField(max_length=5000)
-    future = models.TextField(max_length=5000)
+    slug = models.SlugField(db_index=True, null=True, max_length=200)
+    characteristic = models.TextField()
+    future = models.TextField()
 
     class Meta:
         ordering = ('-average_budget_mark',)

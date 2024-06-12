@@ -5,3 +5,4 @@ class StandardResultsSetPagination(PageNumberPagination):
     """Standard pagination size"""
     page_size = 12
     page_size_query_param = 'page'
+    max_page_size = 20

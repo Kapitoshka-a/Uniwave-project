@@ -135,6 +135,7 @@ CELERY_BROKEN_URL = 'redis://redis:6379/0'
 CACHE_MIDDLEWARE_ALIAS = 'default'
 CACHE_MIDDLEWARE_SECONDS = 60 * 60
 
+
 REST_FRAMEWORK = {
     'DEFAULT_THROTTLE_RATES': {
         'anon': '100/day',
